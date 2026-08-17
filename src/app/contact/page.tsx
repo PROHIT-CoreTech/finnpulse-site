@@ -167,7 +167,7 @@ export default function ContactPage() {
                 <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden><path d={c.d} /></svg>
               </div>
               <h3 className="font-display text-xl font-semibold text-charcoalDeep">{c.label}</h3>
-              <p className="mt-2.5 text-[0.95rem] leading-relaxed text-charcoalSoft">{c.body}</p>
+              <p className="mt-2 text-[0.85rem] leading-normal text-charcoalSoft">{c.body}</p>
               <span className="mt-auto flex items-center gap-2 pt-5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-limeInk">
                 Open <Icon name="arrow" className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </span>
