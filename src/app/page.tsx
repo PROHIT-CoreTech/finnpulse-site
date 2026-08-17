@@ -84,12 +84,12 @@ export default function HomePage() {
       {/* ------------------------------------------------------------ HERO */}
       <section className="relative overflow-hidden bg-gradient-to-b from-white to-offwhite py-14 sm:py-20 lg:py-24">
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(1100px_520px_at_82%_8%,#EEF8E3_0%,rgba(238,248,227,0)_62%)]" />
-        <div className="relative mx-auto grid max-w-wrap items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
+        <div className="relative mx-auto grid max-w-wrap items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-14">
           <div>
             <Eyebrow>Fractional CFO Services for Growing Businesses</Eyebrow>
-            <h1 className="mt-5 font-display text-[clamp(2.1rem,1.35rem+2.5vw,3.05rem)] font-semibold leading-[1.08] tracking-[-0.015em] text-charcoalDeep">
+            <h1 className="mt-5 font-display text-[clamp(2rem,1.25rem+2.2vw,2.85rem)] font-semibold leading-[1.12] tracking-[-0.015em] text-charcoalDeep">
               Your Business Is Growing.<br />
-              Is Your Finance Function <Highlight>Growing With It?</Highlight>
+              Is Your Finance Function <Highlight><span className="inline-block">Growing With It?</span></Highlight>
             </h1>
             <p className="mt-6 max-w-prose text-[1.05rem] leading-relaxed text-charcoalSoft sm:text-[1.15rem]">
               We help growing MSMEs build the financial systems, visibility and discipline they need to scale with confidence.
