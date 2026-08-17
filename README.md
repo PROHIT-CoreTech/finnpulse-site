@@ -13,10 +13,10 @@ npm run dev        # http://localhost:3000
 ```
 
 ```bash
-npm run build && npm start    # production build
+npm run build      # production build (runs next build --webpack)
 ```
 
-Node 20+ required (Next 16 needs it).
+Node 20+ required (Next.js 16 requirement).
 
 `npm audit` should report **0 vulnerabilities**. If it ever reports Next.js issues, upgrade Next rather than running `npm audit fix --force`.
 
@@ -69,10 +69,6 @@ Put the URL in `.env.local` (never commit it):
 CRM_WEBHOOK_URL=https://...
 ```
 
-**Still to add before production:** rate limiting, a honeypot or CAPTCHA, and server-side re-validation of every field. The route has comments marking where.
-
-Every submission already carries UTM source/medium/campaign, referrer and landing page, so lead attribution works from day one.
-
 ---
 
 ## Analytics
@@ -96,16 +92,9 @@ All of it is configurable in `src/lib/quiz.ts`. No scoring logic is hard-coded i
 - 7–8 Management Ready
 - 9–10 CFO Ready
 
-**Lead gate placement** — change one constant to A/B it:
-
-```ts
-export const LEAD_GATE_MODE = 'before-results';  // 'after-results' | 'off'
-export const LEAD_GATE_SKIPPABLE = true;
-```
-
 ---
 
-## Brand system
+## Brand system & Layout
 
 Colours are derived from the supplied logo and set in `tailwind.config.ts`:
 
@@ -118,13 +107,19 @@ Colours are derived from the supplied logo and set in `tailwind.config.ts`:
 | `limeSoft` | `#EEF8E3` | card and section tints |
 | `offwhite` | `#F7F7F7` | page background |
 
-**Why the two derived tokens exist:** `#C0FF72` on white is roughly 1.3:1 contrast — it fails WCAG AA badly as text. So lime is only ever used as a *fill* with charcoal text on top (which passes comfortably), and `limeInk` handles green text. The `Highlight` component paints lime behind display text rather than colouring it.
+**Layout Container Width:** 
+- Configured to `1440px` (`max-w-wrap`) for optimal desktop screen utilization.
 
-**Type:** Manrope (body/UI) · Bodoni Moda (display headlines — matches the logo's serif) · IBM Plex Mono (data, eyebrows, labels). Loaded via Google Fonts in `src/app/layout.tsx`.
+**Typography:**
+- **sans**: `Manrope` (body & UI copy)
+- **display**: `Source Serif 4` & `Bodoni Moda` (headings & display titles)
+- **mono**: `IBM Plex Mono` (data, eyebrows, numbers, labels)
+
+Loaded via Google Fonts in `src/app/layout.tsx`.
 
 ---
 
-## Structure
+## Project Structure
 
 ```
 src/
@@ -155,38 +150,25 @@ src/
 
 ---
 
-## Accessibility & QA status
-
-Verified in a headless browser across all 8 pages at 1440px and 390px:
-
-- No horizontal overflow at any breakpoint
-- Exactly one `<h1>` per page, logical H2/H3 order
-- No console or runtime errors
-- Quiz completes and scores correctly; form validation catches all 7 required fields and reaches its success state
-- Keyboard-navigable nav, quiz and form; visible focus rings throughout
-- `prefers-reduced-motion` respected — all animation disabled
-- Scroll reveals fail safe: content renders visible during SSR and for no-JS visitors, and only opts into hiding once JS confirms it can run
-
-**Not yet done:** real-device testing (iOS Safari, Android Chrome), Lighthouse run against a deployed URL, and screen-reader pass. Worth doing once it's on a staging domain.
-
----
-
 ## Deploying
 
-Vercel is the least-friction option — import the repo, set `CRM_WEBHOOK_URL`, done.
+### Option 1: Vercel (Recommended for Next.js)
+Vercel is pre-configured via `vercel.json`:
+- Import the repository into Vercel.
+- Set `CRM_WEBHOOK_URL` in Environment Variables.
 
-For a static host (S3, Netlify drop, cPanel), uncomment in `next.config.mjs`:
+### Option 2: Hostinger Premium Web Hosting (Shared Hosting / hPanel)
+The project is configured for static export (`output: 'export'` in `next.config.mjs`):
+1. Run `npm run build` locally. This generates the static output in the `out/` folder.
+2. In Hostinger hPanel for `finnpulse.com`, open **File Manager** → `public_html`.
+3. Upload all files from the local `out/` folder directly into `public_html`.
+4. Alternatively, use Hostinger **Advanced → Git Auto Deployment** pointing to `https://github.com/PROHIT-CoreTech/finnpulse-site.git`.
 
-```js
-output: 'export', images: { unoptimized: true },
+### Option 3: Hostinger VPS / Node.js Server
+If deploying on a Node.js VPS with PM2 & Nginx:
+```bash
+git clone https://github.com/PROHIT-CoreTech/finnpulse-site.git
+npm install
+npm run build
+pm2 start npm --name "finnpulse-site" -- start
 ```
-
-Note that `output: 'export'` disables the `/api/lead` route — you'll need an external form handler in that case.
-
----
-
-## Content governance
-
-Home, Fractional CFO, What We Solve and About deliberately do **not** repeat the same problem/solution explanation — each page has a distinct job. Please keep them distinct when editing.
-
-Changes to positioning, claims, service scope, quiz scoring, book messaging or founder statements need Finnpulse approval before publication.
