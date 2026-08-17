@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Card from '@/components/ui/Card';
 import Icon, { IconBadge, type IconName } from '@/components/ui/Icon';
 import Highlight from '@/components/ui/Highlight';
@@ -15,13 +16,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/fractional-cfo' },
 };
 
-const PILLARS: { n: string; icon: IconName; title: string; body: string }[] = [
-  { n: '01', icon: 'shield', title: 'Financial Control', body: 'Make your numbers reliable.' },
-  { n: '02', icon: 'chart', title: 'MIS & Business Intelligence', body: 'Turn financial data into management insights.' },
-  { n: '03', icon: 'cash', title: 'Cash & Working Capital', body: 'Know where your cash is today — and where it will be 13 weeks from now.' },
-  { n: '04', icon: 'target', title: 'Budgeting & Forecasting', body: 'Plan your growth in numbers.' },
-  { n: '05', icon: 'cog', title: 'Systems & Automation', body: 'Build processes that don’t depend on people remembering what to do.' },
-  { n: '06', icon: 'pie', title: 'Profitability & Strategic Finance', body: 'Understand where you make money and where you don’t.' },
+const PILLARS: { n: string; image: string; title: string; body: string }[] = [
+  { n: '01', image: '/1_financial_control.png', title: 'Financial Control', body: 'Make your numbers reliable.' },
+  { n: '02', image: '/2_mis_business_intelligence.png', title: 'MIS & Business Intelligence', body: 'Turn financial data into management insights.' },
+  { n: '03', image: '/3_cash_working_capital.png', title: 'Cash & Working Capital', body: 'Know where your cash is today — and where it will be 13 weeks from now.' },
+  { n: '04', image: '/4_budgeting_forecasting.png', title: 'Budgeting & Forecasting', body: 'Plan your growth in numbers.' },
+  { n: '05', image: '/5_systems_automation.png', title: 'Systems & Automation', body: 'Build processes that don’t depend on people remembering what to do.' },
+  { n: '06', image: '/6_profitability_strategic_finance.png', title: 'Profitability & Strategic Finance', body: 'Understand where you make money and where you don’t.' },
 ];
 
 const ROLES: { who: string; caption: string; hero?: boolean }[] = [
@@ -52,10 +53,18 @@ export default function FractionalCfoPage() {
       <Section>
         <Reveal><SectionHeading center eyebrow="Scope of Work" title="The Six Areas We Manage" /></Reveal>
         <Reveal delay={80}>
-          <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {PILLARS.map((p) => (
-              <Card as="li" key={p.n}>
-                <IconBadge name={p.icon} />
+              <Card as="li" key={p.n} className="group flex flex-col overflow-hidden">
+                <div className="relative mb-4 aspect-[16/9] w-full overflow-hidden rounded-lg border border-hair bg-limeSoft">
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
                 <p className="font-mono text-[0.72rem] tracking-[0.14em] text-limeInk">{p.n}</p>
                 <h3 className="mt-2 text-[1.08rem] font-semibold leading-snug text-charcoalDeep">{p.title}</h3>
                 <p className="mt-2 text-[0.95rem] leading-relaxed text-charcoalSoft">{p.body}</p>
