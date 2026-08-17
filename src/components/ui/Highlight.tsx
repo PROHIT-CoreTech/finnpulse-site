@@ -19,7 +19,7 @@ export default function Highlight({
     <span
       className={`${light ? 'text-white' : 'text-inherit'} [-webkit-box-decoration-break:clone] [box-decoration-break:clone] ${className}`}
       style={{
-        backgroundImage: 'linear-gradient(to top, #C0FF72 15%, transparent 15%)',
+        backgroundImage: 'linear-gradient(to top, #C0FF72 10%, transparent 10%)',
         paddingInline: '0.06em',
         paddingBottom: '0.15em',
       }}
