@@ -57,12 +57,11 @@ export default function FractionalCfoPage() {
             {PILLARS.map((p) => (
               <Card as="li" key={p.n} className="group flex flex-col overflow-hidden">
                 <div className="relative mb-4 aspect-[16/9] w-full overflow-hidden rounded-lg border border-hair bg-limeSoft">
-                  <Image
+                  <img
                     src={p.image}
                     alt={p.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
                   />
                 </div>
                 <p className="font-mono text-[0.72rem] tracking-[0.14em] text-limeInk">{p.n}</p>
