@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white font-sans text-[1.0313rem] leading-relaxed text-charcoal antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible {
+    @apply outline outline-[3px] outline-offset-[3px] outline-limeInk;
+    border-radius: 3px;
+  }
+  ::selection { @apply bg-lime text-charcoalDeep; }
+}
+
+@layer utilities {
+  /* Skip link — visible only on keyboard focus */
+  .skip-link {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .skip-link:focus {
+    @apply left-0 top-0 z-[200] rounded-br-lg bg-charcoalDeep px-5 py-3 text-white;
+    width: auto; height: auto; margin: 0; overflow: visible; clip: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
