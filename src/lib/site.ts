@@ -30,7 +30,7 @@ export const site = {
     linkedin: 'https://www.linkedin.com/in/rohanmehta-ca',
     facebook: 'https://facebook.com/rohan.mehta.798',
     youtube: 'https://www.youtube.com/@CARohanMehta',
-    instagram: 'https://instagram.com/ron_9372',
+    instagram: 'https://www.instagram.com/cforohanmehta?igsh=MWFxMTVnYzRoN2o3bw%3D%3D',
   },
 
   /**
