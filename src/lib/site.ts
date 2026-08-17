@@ -27,9 +27,10 @@ export const site = {
 
   /** @placeholder — real profile URLs to be supplied by Finnpulse */
   social: {
-    linkedin: 'https://www.linkedin.com/',
-    youtube: 'https://www.youtube.com/',
-    instagram: 'https://www.instagram.com/',
+    linkedin: 'https://www.linkedin.com/in/rohanmehta-ca',
+    facebook: 'https://facebook.com/rohan.mehta.798',
+    youtube: 'https://www.youtube.com/@CARohanMehta',
+    instagram: 'https://instagram.com/ron_9372',
   },
 
   /**

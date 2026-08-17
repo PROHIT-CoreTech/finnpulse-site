@@ -6,6 +6,8 @@ import { nav, footerServices, site } from '@/lib/site';
 const socials = [
   { key: 'linkedin', label: 'LinkedIn', href: site.social.linkedin,
     d: 'M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21H9z' },
+  { key: 'facebook', label: 'Facebook', href: site.social.facebook,
+    d: 'M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.69c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.21.19 2.21.19v2.43h-1.25c-1.23 0-1.61.76-1.61 1.54V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z' },
   { key: 'youtube', label: 'YouTube', href: site.social.youtube,
     d: 'M23 12s0-3.6-.46-5.32a2.76 2.76 0 0 0-1.95-1.95C18.87 4.27 12 4.27 12 4.27s-6.87 0-8.59.46A2.76 2.76 0 0 0 1.46 6.7C1 8.4 1 12 1 12s0 3.6.46 5.3a2.76 2.76 0 0 0 1.95 1.95c1.72.46 8.59.46 8.59.46s6.87 0 8.59-.46a2.76 2.76 0 0 0 1.95-1.95C23 15.6 23 12 23 12ZM9.8 15.3V8.7l5.7 3.3z' },
   { key: 'instagram', label: 'Instagram', href: site.social.instagram,

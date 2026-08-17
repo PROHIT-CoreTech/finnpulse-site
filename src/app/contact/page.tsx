@@ -59,6 +59,8 @@ const PREP = [
 const CONNECT = [
   { key: 'linkedin', label: 'LinkedIn', href: site.social.linkedin,
     body: 'Connect with CA Rohan Mehta for insights on finance, working capital, business growth, automation and Fractional CFO services.' },
+  { key: 'facebook', label: 'Facebook', href: site.social.facebook,
+    body: 'Follow updates, financial insights and business announcements on Facebook.' },
   { key: 'youtube', label: 'YouTube', href: site.social.youtube,
     body: 'Watch practical videos on finance and business management.' },
   { key: 'instagram', label: 'Instagram', href: site.social.instagram,
@@ -153,7 +155,7 @@ export default function ContactPage() {
       {/* Other ways to connect */}
       <Section>
         <SectionHeading center eyebrow="Elsewhere" title="Other Ways to Connect" />
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CONNECT.map((c) => (
             <a key={c.key} href={c.href} target="_blank" rel="noopener noreferrer"
                className="group flex h-full flex-col rounded-xl border border-hair bg-white p-6 transition-all hover:border-limeInk hover:shadow-card motion-safe:hover:-translate-y-0.5">
