@@ -58,12 +58,16 @@ const PREP = [
 
 const CONNECT = [
   { key: 'linkedin', label: 'LinkedIn', href: site.social.linkedin,
+    d: 'M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.45-2.2 2.96V21H9z',
     body: 'Connect with CA Rohan Mehta for insights on finance, working capital, business growth, automation and Fractional CFO services.' },
   { key: 'facebook', label: 'Facebook', href: site.social.facebook,
+    d: 'M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.69c0-2.47 1.47-3.83 3.72-3.83 1.08 0 2.21.19 2.21.19v2.43h-1.25c-1.23 0-1.61.76-1.61 1.54V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z',
     body: 'Follow updates, financial insights and business announcements on Facebook.' },
   { key: 'youtube', label: 'YouTube', href: site.social.youtube,
+    d: 'M23 12s0-3.6-.46-5.32a2.76 2.76 0 0 0-1.95-1.95C18.87 4.27 12 4.27 12 4.27s-6.87 0-8.59.46A2.76 2.76 0 0 0 1.46 6.7C1 8.4 1 12 1 12s0 3.6.46 5.3a2.76 2.76 0 0 0 1.95 1.95c1.72.46 8.59.46 8.59.46s6.87 0 8.59-.46a2.76 2.76 0 0 0 1.95-1.95C23 15.6 23 12 23 12ZM9.8 15.3V8.7l5.7 3.3z',
     body: 'Watch practical videos on finance and business management.' },
   { key: 'instagram', label: 'Instagram', href: site.social.instagram,
+    d: 'M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.25.07 1.63.07 4.81s0 3.56-.07 4.81c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.25.06-1.63.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.8 3.8 0 0 1-1.38-.9 3.8 3.8 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.56 2.2 15.18 2.2 12s0-3.56.07-4.81c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.44 2.21 8.82 2.2 12 2.2Zm0 3.14A6.66 6.66 0 1 0 18.66 12 6.66 6.66 0 0 0 12 5.34Zm0 10.98A4.32 4.32 0 1 1 16.32 12 4.32 4.32 0 0 1 12 16.32Zm6.92-11.2a1.56 1.56 0 1 1-1.55-1.55 1.56 1.56 0 0 1 1.55 1.55Z',
     body: 'Follow content on financial management, business growth and CFO insights.' },
 ];
 
@@ -159,6 +163,9 @@ export default function ContactPage() {
           {CONNECT.map((c) => (
             <a key={c.key} href={c.href} target="_blank" rel="noopener noreferrer"
                className="group flex h-full flex-col rounded-xl border border-hair bg-white p-6 transition-all hover:border-limeInk hover:shadow-card motion-safe:hover:-translate-y-0.5">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-[10px] bg-limeSoft text-limeInk">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden><path d={c.d} /></svg>
+              </div>
               <h3 className="font-display text-xl font-semibold text-charcoalDeep">{c.label}</h3>
               <p className="mt-2.5 text-[0.95rem] leading-relaxed text-charcoalSoft">{c.body}</p>
               <span className="mt-auto flex items-center gap-2 pt-5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-limeInk">
