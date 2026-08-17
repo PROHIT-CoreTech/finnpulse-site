@@ -163,11 +163,13 @@ export default function ContactPage() {
           {CONNECT.map((c) => (
             <a key={c.key} href={c.href} target="_blank" rel="noopener noreferrer"
                className="group flex h-full flex-col rounded-xl border border-hair bg-white p-6 transition-all hover:border-limeInk hover:shadow-card motion-safe:hover:-translate-y-0.5">
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-[10px] bg-limeSoft text-limeInk">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden><path d={c.d} /></svg>
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[9px] bg-limeSoft text-limeInk">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]" aria-hidden><path d={c.d} /></svg>
+                </div>
+                <h3 className="font-display text-xl font-semibold text-charcoalDeep">{c.label}</h3>
               </div>
-              <h3 className="font-display text-xl font-semibold text-charcoalDeep">{c.label}</h3>
-              <p className="mt-2 text-[0.85rem] leading-normal text-charcoalSoft">{c.body}</p>
+              <p className="mt-3 text-[0.85rem] leading-normal text-charcoalSoft">{c.body}</p>
               <span className="mt-auto flex items-center gap-2 pt-5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-limeInk">
                 Open <Icon name="arrow" className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </span>
