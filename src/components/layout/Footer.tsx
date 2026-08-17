@@ -51,7 +51,7 @@ export default function Footer() {
               <li className="flex gap-2.5"><Icon name="mail" className="mt-0.5 h-4 w-4 shrink-0 text-lime" />
                 <a href={`mailto:${site.email}`} className="hover:text-lime">{site.email}</a></li>
               <li className="flex gap-2.5"><Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-lime" />
-                <span>{site.city}</span></li>
+                <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" className="hover:text-lime">{site.city}</a></li>
             </ul>
 
             <h2 className="mb-3 mt-8 font-mono text-[0.68rem] font-medium uppercase tracking-[0.16em] text-white">Stay Connected</h2>

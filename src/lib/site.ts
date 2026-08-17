@@ -25,6 +25,8 @@ export const site = {
 
   city: 'Mumbai, India',
 
+  mapUrl: 'https://maps.app.goo.gl/Fp3fgaeQBrv5jRkr5?g_st=aw',
+
   /** @placeholder — real profile URLs to be supplied by Finnpulse */
   social: {
     linkedin: 'https://www.linkedin.com/in/rohanmehta-ca',
