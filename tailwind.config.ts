@@ -31,7 +31,7 @@ const config: Config = {
         'display-lg': ['clamp(1.9rem,1.35rem + 2.2vw,2.95rem)', { lineHeight: '1.08', letterSpacing: '-0.012em' }],
         'display-md': ['clamp(1.5rem,1.15rem + 1.4vw,2.1rem)', { lineHeight: '1.14', letterSpacing: '-0.01em' }],
       },
-      maxWidth: { wrap: '1180px', prose: '68ch' },
+      maxWidth: { wrap: '1440px', prose: '75ch' },
       boxShadow: {
         card: '0 1px 2px rgba(59,58,56,.04), 0 14px 34px -18px rgba(59,58,56,.22)',
         lift: '0 2px 6px rgba(59,58,56,.05), 0 30px 64px -26px rgba(59,58,56,.32)',

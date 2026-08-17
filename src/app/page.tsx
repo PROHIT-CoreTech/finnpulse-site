@@ -118,7 +118,7 @@ export default function HomePage() {
         </Reveal>
 
         <Reveal delay={80}>
-          <ul className="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2">
+          <ul className="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {PAINS.map((p) => (
               <li key={p.text} className="flex items-start gap-3.5 rounded-xl border border-hair bg-white p-4">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-limeSoft text-limeInk">
