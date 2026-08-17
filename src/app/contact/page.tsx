@@ -169,12 +169,35 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-4 grid gap-4 lg:grid-cols-3">
-          <Card hover={false}><p className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-muted">Call</p>
-            <a href={site.phoneHref} className="mt-2 text-[1.05rem] font-medium text-charcoalDeep underline underline-offset-4">{site.phone}</a></Card>
-          <Card hover={false}><p className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-muted">Email</p>
-            <a href={`mailto:${site.email}`} className="mt-2 text-[1.05rem] font-medium text-charcoalDeep underline underline-offset-4">{site.email}</a></Card>
-          <Card hover={false}><p className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-muted">Location</p>
-            <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" className="mt-2 block text-[1.05rem] font-medium text-charcoalDeep underline underline-offset-4 hover:text-limeInk">{site.locationLine}</a></Card>
+          <Card hover={false}>
+            <div className="flex items-center gap-2 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-limeInk">
+              <Icon name="phone" className="h-4 w-4" />
+              <span>Call</span>
+            </div>
+            <a href={site.phoneHref} className="mt-2 block text-[1.05rem] font-medium text-charcoalDeep underline underline-offset-4 hover:text-limeInk">
+              {site.phone}
+            </a>
+          </Card>
+
+          <Card hover={false}>
+            <div className="flex items-center gap-2 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-limeInk">
+              <Icon name="mail" className="h-4 w-4" />
+              <span>Email</span>
+            </div>
+            <a href={`mailto:${site.email}`} className="mt-2 block text-[1.05rem] font-medium text-charcoalDeep underline underline-offset-4 hover:text-limeInk">
+              {site.email}
+            </a>
+          </Card>
+
+          <Card hover={false}>
+            <div className="flex items-center gap-2 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-limeInk">
+              <Icon name="pin" className="h-4 w-4" />
+              <span>Location</span>
+            </div>
+            <a href={site.mapUrl} target="_blank" rel="noopener noreferrer" className="mt-2 block text-[1.05rem] font-medium text-charcoalDeep underline underline-offset-4 hover:text-limeInk">
+              {site.locationLine}
+            </a>
+          </Card>
         </div>
       </Section>
     </>
