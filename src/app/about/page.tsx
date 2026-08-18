@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Card from '@/components/ui/Card';
 import Icon, { IconBadge, type IconName } from '@/components/ui/Icon';
 import Highlight from '@/components/ui/Highlight';
@@ -112,16 +113,15 @@ export default function AboutPage() {
       <Section tone="offwhite">
         <div className="grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <Reveal>
-            {/* PLACEHOLDER — swap for <Image src="/rohan-mehta.jpg" /> when the professional portrait is supplied. */}
-            <div className="mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl border border-hair bg-gradient-to-br from-white to-limeSoft">
-              <div className="flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
-                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white text-limeInk shadow-card">
-                  <Icon name="user" className="h-9 w-9" />
-                </span>
-                <p className="font-mono text-[0.62rem] uppercase leading-relaxed tracking-[0.14em] text-muted">
-                  Founder portrait<br />to be supplied
-                </p>
-              </div>
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl border border-hair bg-white shadow-card">
+              <Image
+                src="/profile.png"
+                alt="CA Rohan Mehta - Founder of Finnpulse Advisors"
+                fill
+                sizes="(max-width: 768px) 100vw, 320px"
+                className="object-cover object-top"
+                priority
+              />
             </div>
           </Reveal>
 
