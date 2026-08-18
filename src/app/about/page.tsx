@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Card from '@/components/ui/Card';
 import Icon, { IconBadge, type IconName } from '@/components/ui/Icon';
 import Highlight from '@/components/ui/Highlight';
-import Eyebrow from '@/components/ui/Eyebrow';
 import PulseRule from '@/components/ui/PulseRule';
 import Section from '@/components/ui/Section';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -37,28 +36,10 @@ export default function AboutPage() {
       <ScrollDepth page="about" />
 
       <Section className="!pb-0">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
-          <div className="lg:col-span-7">
-            <Eyebrow>About Finnpulse</Eyebrow>
-            <h1 className="mt-4 font-display text-display-xl font-semibold text-charcoalDeep">
-              We Believe in <Highlight>Creating Value.</Highlight>
-            </h1>
-            <div className="mt-8 max-w-lg"><PulseRule /></div>
-          </div>
-          <div className="space-y-4 rounded-2xl border border-hair bg-gradient-to-br from-white to-limeSoft/30 p-6 shadow-card lg:col-span-5 sm:p-7">
-            <h2 className="font-display text-xl font-semibold text-charcoalDeep">
-              Our Founding Philosophy
-            </h2>
-            <p className="text-[1.02rem] leading-relaxed text-charcoalSoft">
-              At Finnpulse, our philosophy is simple: If we work with a business, we should make the business better. We focus on real outcomes, better systems, and lasting growth.
-            </p>
-            <ul className="flex flex-wrap gap-2 pt-1 text-xs font-semibold text-limeInk">
-              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ Value First</li>
-              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ Outcome Driven</li>
-              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ Built to Scale</li>
-            </ul>
-          </div>
-        </div>
+        <SectionHeading as="h1" size="xl" eyebrow="About Finnpulse"
+          title={<>We Believe in <Highlight>Creating Value.</Highlight></>}
+          lede="At Finnpulse, our philosophy is simple:" />
+        <div className="mt-10 max-w-lg"><PulseRule /></div>
       </Section>
 
       {/* Philosophy */}
