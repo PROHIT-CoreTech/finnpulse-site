@@ -96,7 +96,7 @@ export default function TheBookPage() {
       </section>
 
       {/* The story */}
-      <Section narrow>
+      <Section containerClassName="max-w-5xl">
         <Reveal>
           <SectionHeading
             eyebrow="The Story"
@@ -190,7 +190,7 @@ export default function TheBookPage() {
       </Section>
 
       {/* What is a Fractional CFO? */}
-      <Section narrow>
+      <Section containerClassName="max-w-5xl">
         <Reveal>
           <div className="rounded-2xl border border-[#D6EBBE] bg-gradient-to-br from-limeSoft/50 to-white p-7 sm:p-9 shadow-card">
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.18em] text-limeInk">A Quick Word</p>
@@ -213,7 +213,7 @@ export default function TheBookPage() {
       </Section>
 
       {/* Read a Chapter Free */}
-      <Section narrow>
+      <Section containerClassName="max-w-5xl">
         <Reveal>
           <Card tone="soft" hover={false} className="text-center">
             <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-limeInk">Read a Chapter Free</p>

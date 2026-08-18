@@ -8,7 +8,7 @@ const tones = {
 };
 
 export default function Section({
-  children, tone = 'white', className = '', narrow = false, id, tight = false,
+  children, tone = 'white', className = '', narrow = false, id, tight = false, containerClassName = '',
 }: {
   children: ReactNode;
   tone?: keyof typeof tones;
@@ -16,10 +16,12 @@ export default function Section({
   narrow?: boolean;
   id?: string;
   tight?: boolean;
+  containerClassName?: string;
 }) {
+  const widthClass = containerClassName || (narrow ? 'max-w-3xl' : 'max-w-wrap');
   return (
     <section id={id} className={`${tones[tone]} ${tight ? 'py-10 sm:py-14' : 'py-16 sm:py-20 lg:py-24'} ${className}`}>
-      <div className={`mx-auto px-5 sm:px-8 ${narrow ? 'max-w-3xl' : 'max-w-wrap'}`}>{children}</div>
+      <div className={`mx-auto px-5 sm:px-8 ${widthClass}`}>{children}</div>
     </section>
   );
 }
