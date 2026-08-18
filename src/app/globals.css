@@ -9,7 +9,7 @@
     -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-white font-sans text-[1.0313rem] leading-relaxed text-charcoal antialiased;
+    @apply bg-white font-sans text-[1.0313rem] leading-relaxed text-charcoal antialiased overflow-x-hidden;
     text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4 { text-wrap: balance; }

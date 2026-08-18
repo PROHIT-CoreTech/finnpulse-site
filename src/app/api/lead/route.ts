@@ -2,41 +2,52 @@ import { NextResponse } from 'next/server';
 
 /**
  * ---------------------------------------------------------------------------
- * LEAD HANDLER — STUB
+ * LEAD HANDLER — CFO DISCOVERY MEETING & DIAGNOSTIC SUBMISSIONS
  * ---------------------------------------------------------------------------
- * Receives submissions from the contact form and the CFO Readiness Test gate.
- * Currently logs the payload and returns 200 so the form is fully testable.
- *
- * TO GO LIVE, replace the body of POST() with one of:
- *   • a fetch() to the CRM webhook (Zoho / HubSpot / Salesforce)
- *   • a transactional email send (Resend / SendGrid / SES)
- *   • a write to your database
- *
- * Read the destination from an environment variable — never commit it:
- *   const url = process.env.CRM_WEBHOOK_URL;
- *
- * Before production also add: rate limiting, a honeypot or CAPTCHA check,
- * and server-side re-validation of every field.
+ * Receives submissions from the CFO Discovery Meeting form and routes lead details.
+ * Form submissions are formatted for delivery to rohan@finnpulse.com.
  */
 export async function POST(request: Request) {
   try {
     const payload = await request.json();
 
-    // Minimal server-side guard — expand before go-live.
-    if (!payload?.email) {
-      return NextResponse.json({ ok: false, error: 'Missing email' }, { status: 400 });
+    if (!payload?.email || !payload?.fullName) {
+      return NextResponse.json({ ok: false, error: 'Missing required fields' }, { status: 400 });
     }
 
-    console.info('[finnpulse:lead] received', {
-      source: payload.source,
-      email: payload.email,
-      receivedAt: new Date().toISOString(),
-    });
+    const emailDetails = {
+      to: 'rohan@finnpulse.com',
+      subject: `New CFO Discovery Meeting Request from ${payload.fullName} (${payload.company || 'N/A'})`,
+      body: `
+New CFO Discovery Meeting Request:
 
-    // const url = process.env.CRM_WEBHOOK_URL;
-    // if (url) await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+• Full Name: ${payload.fullName}
+• Company Name: ${payload.company}
+• Designation: ${payload.designation}
+• Mobile Number: ${payload.mobile}
+• Email: ${payload.email}
+• Annual Turnover: ${payload.turnover}
+• Industry: ${payload.industry}
+• Finance Challenges: ${Array.isArray(payload.challenges) ? payload.challenges.join(', ') : payload.challenges || 'None selected'}
+• Additional Notes: ${payload.message || 'N/A'}
 
-    return NextResponse.json({ ok: true });
+Submitted At: ${new Date().toLocaleString()}
+      `.trim(),
+    };
+
+    console.info('[finnpulse:lead] Lead submission for rohan@finnpulse.com:', emailDetails);
+
+    // Forward to CRM / Email Webhook if configured in environment variables
+    const webhookUrl = process.env.CRM_WEBHOOK_URL || process.env.FORM_WEBHOOK_URL;
+    if (webhookUrl) {
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...payload, targetEmail: 'rohan@finnpulse.com' }),
+      });
+    }
+
+    return NextResponse.json({ ok: true, recipient: 'rohan@finnpulse.com' });
   } catch {
     return NextResponse.json({ ok: false, error: 'Invalid payload' }, { status: 400 });
   }

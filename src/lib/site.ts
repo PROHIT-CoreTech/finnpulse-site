@@ -20,8 +20,8 @@ export const site = {
   phone: '+91 98765 43210',
   phoneHref: 'tel:+919876543210',
 
-  /** @placeholder — real inbox to be supplied by Finnpulse */
-  email: 'hello@finnpulse.com',
+  /** Target inbox for form notifications & enquiries */
+  email: 'rohan@finnpulse.com',
 
   city: 'Mumbai, India',
 
@@ -58,7 +58,7 @@ export const site = {
    * and returns 200 so the form is testable; swap LEAD_ENDPOINT for the real
    * destination (or forward from inside the route handler).
    */
-  leadEndpoint: '/api/lead',
+  leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT ?? '/lead.php',
 };
 
 export const nav = [

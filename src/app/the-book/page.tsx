@@ -99,7 +99,7 @@ export default function TheBookPage() {
       </section>
 
       {/* The story */}
-      <Section narrow>
+      <Section containerClassName="max-w-5xl">
         <Reveal><SectionHeading eyebrow="The Story" title="A founder, a set of numbers, and one hour a month." /></Reveal>
         <Reveal delay={60}>
           <div className="mt-10 space-y-5 border-l-2 border-hair pl-6 text-[1.05rem] leading-relaxed text-charcoalSoft sm:pl-8">
@@ -125,18 +125,9 @@ export default function TheBookPage() {
       </Section>
 
       {/* Free chapter */}
-      <Section narrow>
+      <Section>
         <Reveal>
-          <Card tone="soft" hover={false} className="text-center">
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-limeInk">Read a Chapter Free</p>
-            <p className="mx-auto mt-5 max-w-prose font-display text-display-md font-semibold text-charcoalDeep">
-              Don’t buy the book because we tell you it’s useful.
-            </p>
-            <p className="mx-auto mt-4 max-w-prose text-[1.02rem] leading-relaxed text-charcoal">
-              Read the first chapter. If the story resonates with you, continue the journey.
-            </p>
-            <div className="mt-8 flex justify-center"><ChapterReader /></div>
-          </Card>
+          <ChapterReader inline />
         </Reveal>
       </Section>
 

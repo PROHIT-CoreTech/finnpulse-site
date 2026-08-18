@@ -36,6 +36,18 @@ const inputCls =
   'w-full min-h-[48px] rounded-[10px] border border-hairStrong bg-white px-4 py-3 text-base text-charcoalDeep ' +
   'transition-colors focus:border-limeInk focus:outline-none focus:ring-[3px] focus:ring-lime/45';
 
+function Field({ id, label, children, error }: { id: string; label: string; children: React.ReactNode; error?: string }) {
+  return (
+    <div className="grid gap-1.5">
+      <label htmlFor={id} className="text-sm font-semibold text-charcoalDeep">
+        {label} <span className="text-limeInk" aria-hidden>*</span>
+      </label>
+      {children}
+      {error && <p id={`${id}-error`} className="text-sm text-red-700">{error}</p>}
+    </div>
+  );
+}
+
 export default function LeadForm() {
   const [values, setValues] = useState<Values>(EMPTY);
   const [errors, setErrors] = useState<Partial<Record<keyof Values, string>>>({});
@@ -80,7 +92,12 @@ export default function LeadForm() {
       const res = await fetch(site.leadEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ source: 'cfo_discovery_meeting', ...values, ...getAttribution() }),
+        body: JSON.stringify({
+          recipient: 'rohan@finnpulse.com',
+          source: 'cfo_discovery_meeting',
+          ...values,
+          ...getAttribution(),
+        }),
       });
       if (!res.ok) throw new Error(String(res.status));
       trackEvent('meeting_form_submit', {
@@ -97,15 +114,6 @@ export default function LeadForm() {
     }
   }
 
-  const Field = ({ id, label, children, error }: { id: string; label: string; children: React.ReactNode; error?: string }) => (
-    <div className="grid gap-1.5">
-      <label htmlFor={id} className="text-sm font-semibold text-charcoalDeep">
-        {label} <span className="text-limeInk" aria-hidden>*</span>
-      </label>
-      {children}
-      {error && <p id={`${id}-error`} className="text-sm text-red-700">{error}</p>}
-    </div>
-  );
 
   if (status === 'ok') {
     return (
