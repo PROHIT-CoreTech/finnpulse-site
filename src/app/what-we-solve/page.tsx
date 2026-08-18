@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Card from '@/components/ui/Card';
 import Icon, { IconBadge, type IconName } from '@/components/ui/Icon';
 import Highlight from '@/components/ui/Highlight';
+import Eyebrow from '@/components/ui/Eyebrow';
 import Section from '@/components/ui/Section';
 import SectionHeading from '@/components/ui/SectionHeading';
 import CtaBand from '@/components/CtaBand';
@@ -94,9 +95,27 @@ export default function WhatWeSolvePage() {
   return (
     <>
       <Section className="!pb-0">
-        <SectionHeading as="h1" size="xl" eyebrow="Problems We Solve"
-          title={<>What Is Holding Your Business <Highlight>Back?</Highlight></>}
-          lede="We solve the financial problems that appear when a business starts getting bigger." />
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
+          <div className="lg:col-span-7">
+            <Eyebrow>Problems We Solve</Eyebrow>
+            <h1 className="mt-4 font-display text-display-xl font-semibold text-charcoalDeep">
+              What Is Holding Your Business <Highlight>Back?</Highlight>
+            </h1>
+          </div>
+          <div className="space-y-4 rounded-2xl border border-hair bg-gradient-to-br from-white to-limeSoft/30 p-6 shadow-card lg:col-span-5 sm:p-7">
+            <h2 className="font-display text-xl font-semibold text-charcoalDeep">
+              Solving the Financial Bottlenecks of Scale
+            </h2>
+            <p className="text-[1.02rem] leading-relaxed text-charcoalSoft">
+              We solve the core financial problems that appear when a business starts getting bigger — from untrusted numbers and cash flow emergencies to unorganized systems and scaling bottlenecks.
+            </p>
+            <ul className="flex flex-wrap gap-2 pt-1 text-xs font-semibold text-limeInk">
+              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ Trustworthy Numbers</li>
+              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ 13-Week Cash Visibility</li>
+              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ Scalable SOPs</li>
+            </ul>
+          </div>
+        </div>
       </Section>
 
       <Section>

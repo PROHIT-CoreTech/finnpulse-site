@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Button from '@/components/ui/Button';
 import Highlight from '@/components/ui/Highlight';
+import Eyebrow from '@/components/ui/Eyebrow';
 import Section from '@/components/ui/Section';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/Reveal';
@@ -34,9 +35,27 @@ export default function OurApproachPage() {
   return (
     <>
       <Section className="!pb-0">
-        <SectionHeading as="h1" size="xl" eyebrow="How We Work"
-          title={<>One Problem at a Time. One System at a Time. <Highlight>One Breakthrough at a Time.</Highlight></>}
-          lede="Financial transformation is not a one-day exercise. We follow a structured journey." />
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
+          <div className="lg:col-span-7">
+            <Eyebrow>How We Work</Eyebrow>
+            <h1 className="mt-4 font-display text-display-xl font-semibold text-charcoalDeep">
+              One Problem at a Time. One System at a Time. <Highlight>One Breakthrough at a Time.</Highlight>
+            </h1>
+          </div>
+          <div className="space-y-4 rounded-2xl border border-hair bg-gradient-to-br from-white to-limeSoft/30 p-6 shadow-card lg:col-span-5 sm:p-7">
+            <h2 className="font-display text-xl font-semibold text-charcoalDeep">
+              A Structured Journey to Financial Clarity
+            </h2>
+            <p className="text-[1.02rem] leading-relaxed text-charcoalSoft">
+              Financial transformation is not a one-day exercise. We follow a 12-step structured journey to build a finance function that runs on systems, not firefighting.
+            </p>
+            <ul className="flex flex-wrap gap-2 pt-1 text-xs font-semibold text-limeInk">
+              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ 12-Step Journey</li>
+              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ Systems &amp; Controls</li>
+              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ Sustainable Growth</li>
+            </ul>
+          </div>
+        </div>
       </Section>
 
       <Section>
