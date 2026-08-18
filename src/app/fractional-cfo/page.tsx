@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Card from '@/components/ui/Card';
 import Icon, { IconBadge, type IconName } from '@/components/ui/Icon';
 import Highlight from '@/components/ui/Highlight';
+import Eyebrow from '@/components/ui/Eyebrow';
 import PulseRule from '@/components/ui/PulseRule';
 import Section from '@/components/ui/Section';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -43,10 +44,28 @@ export default function FractionalCfoPage() {
   return (
     <>
       <Section className="!pb-0">
-        <SectionHeading as="h1" size="xl" eyebrow="The Role, Explained"
-          title={<>What Does a Fractional CFO <Highlight>Actually Do?</Highlight></>}
-          lede="A Fractional CFO gives your business access to senior-level financial thinking without the cost of hiring a full-time CFO." />
-        <div className="mt-10 max-w-lg"><PulseRule /></div>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
+          <div className="lg:col-span-7">
+            <Eyebrow>The Role, Explained</Eyebrow>
+            <h1 className="mt-4 font-display text-display-xl font-semibold text-charcoalDeep">
+              What Does a Fractional CFO <Highlight>Actually Do?</Highlight>
+            </h1>
+            <div className="mt-8 max-w-lg"><PulseRule /></div>
+          </div>
+          <div className="space-y-4 rounded-2xl border border-hair bg-gradient-to-br from-white to-limeSoft/30 p-6 shadow-card lg:col-span-5 sm:p-7">
+            <h2 className="font-display text-xl font-semibold text-charcoalDeep">
+              Senior Financial Leadership On-Demand
+            </h2>
+            <p className="text-[1.02rem] leading-relaxed text-charcoalSoft">
+              A Fractional CFO gives your business access to senior-level financial thinking, structure, and strategic governance — without the cost of hiring a full-time executive.
+            </p>
+            <ul className="flex flex-wrap gap-2 pt-1 text-xs font-semibold text-limeInk">
+              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ Financial Control</li>
+              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ MIS &amp; BI</li>
+              <li className="rounded-md bg-limeSoft px-2.5 py-1">✓ Strategic Growth</li>
+            </ul>
+          </div>
+        </div>
       </Section>
 
       {/* Six pillars */}
