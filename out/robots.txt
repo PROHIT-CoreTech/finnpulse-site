@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://www.finnpulse.com
+Sitemap: https://www.finnpulse.com/sitemap.xml
