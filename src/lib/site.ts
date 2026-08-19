@@ -67,7 +67,6 @@ export const nav = [
   { href: '/what-we-solve', label: 'What We Solve' },
   { href: '/our-approach', label: 'Our Approach' },
   { href: '/cfo-readiness-test', label: 'CFO Readiness Test' },
-  { href: '/the-book', label: 'The Book' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];

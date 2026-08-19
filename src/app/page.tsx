@@ -205,7 +205,7 @@ export default function HomePage() {
 
         <div className="mt-10 flex justify-center">
           <TrackedCta label="See How The CFO Meeting Works" location="home_framework">
-            <Button href="/the-book" variant="outlineLight">See How The CFO Meeting Works</Button>
+            <Button href="/our-approach" variant="outlineLight">See How The CFO Meeting Works</Button>
           </TrackedCta>
         </div>
       </Section>
