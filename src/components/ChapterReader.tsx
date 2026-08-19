@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
-import Icon from '@/components/ui/Icon';
 import BuyBookButton from '@/components/BuyBookButton';
 import TrackedCta from '@/components/TrackedCta';
 import { bookingHref } from '@/lib/site';
@@ -27,27 +26,24 @@ export default function ChapterReader({
   const [progress, setProgress] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Synchronized global event listeners for open and close
+  // Only the inline section listener listens for global custom events to prevent duplicate modals
   useEffect(() => {
+    if (!inline) return;
     const handleOpen = () => {
       setIsOpen(true);
-      trackEvent('chapter_one_open', { source: 'button_trigger' });
+      trackEvent('chapter_one_open', { source: 'custom_event' });
     };
-    const handleClose = () => {
-      setIsOpen(false);
-    };
-
     window.addEventListener('open-chapter-1', handleOpen);
-    window.addEventListener('close-chapter-1', handleClose);
-    return () => {
-      window.removeEventListener('open-chapter-1', handleOpen);
-      window.removeEventListener('close-chapter-1', handleClose);
-    };
-  }, []);
+    return () => window.removeEventListener('open-chapter-1', handleOpen);
+  }, [inline]);
+
+  const openReader = () => {
+    setIsOpen(true);
+    trackEvent('chapter_one_open', { source: inline ? 'inline_card' : 'button' });
+  };
 
   const closeModal = () => {
     setIsOpen(false);
-    window.dispatchEvent(new CustomEvent('close-chapter-1'));
   };
 
   // Prevent background scroll when modal is open
@@ -82,10 +78,6 @@ export default function ChapterReader({
       const p = Math.min(100, Math.max(0, Math.round((scrollTop / total) * 100)));
       setProgress(p);
     }
-  };
-
-  const openReader = () => {
-    window.dispatchEvent(new CustomEvent('open-chapter-1'));
   };
 
   // Theme styling definitions
@@ -134,21 +126,19 @@ export default function ChapterReader({
     lg: 'text-[1.25rem] leading-[1.9]',
   }[fontSize];
 
-  // Standalone Trigger Buttons (Hero / Footer):
-  // They only trigger the global open-chapter-1 event.
+  // Standalone Trigger Button (Hero / Footer):
   if (!inline) {
     return (
-      <Button
-        variant={variant}
-        onClick={openReader}
-      >
-        {label}
-      </Button>
+      <>
+        <Button variant={variant} onClick={openReader}>
+          {label}
+        </Button>
+        {isOpen && renderBookModal()}
+      </>
     );
   }
 
   // Inline Section Reader Component on /the-book page:
-  // Manages and renders the single Book Reader modal.
   return (
     <div id="read-chapter-free" className="w-full">
       <Card tone="soft" hover={false} className="text-center transition-all duration-300">
@@ -173,7 +163,7 @@ export default function ChapterReader({
         </div>
       </Card>
 
-      {/* Render Single Reader Modal */}
+      {/* Render Reader Modal */}
       {isOpen && renderBookModal()}
     </div>
   );
