@@ -58,7 +58,7 @@ export const site = {
    * and returns 200 so the form is testable; swap LEAD_ENDPOINT for the real
    * destination (or forward from inside the route handler).
    */
-  leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT ?? '/lead.php',
+  leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT ?? '/api/lead',
 };
 
 export const nav = [
